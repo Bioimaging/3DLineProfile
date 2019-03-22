@@ -1,0 +1,22 @@
+function makeSymetryXls
+%   Nicolas Liaudet
+%
+%   Bioimaging Core Facility - UNIGE
+%   https://www.unige.ch/medecine/bioimaging/en/bioimaging-core-facility/
+%
+%   v1.0 07-Feb-2019 NL
+clc
+clear all
+close all
+
+path   =  uigetdir;
+fnames = dir([path filesep '*.dv']);
+fnames = {fnames.name}';
+
+xlsdata(1,:) = {'file name' ,'Half-spindle ratio'};
+xlsdata(2:length(fnames)+1,1) = fnames;
+xlswrite('symmetry.xlsx',xlsdata)
+
+disp('Done!')
+
+
